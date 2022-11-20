@@ -2,8 +2,8 @@
 
 <h1>Friends List</h1>
 
-<table class="table">
-  <thead>
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
@@ -13,7 +13,7 @@
       <th colspan= "3"></th>
     </tr>
   </thead>
-</table>
+
 
 <tbody id="friends">
   <% @friends.each do |friend| %>
@@ -22,10 +22,17 @@
   <td><%= friend.last_name %></td>
   <td><%= friend.email %></td>
   <td><%= friend.phone %></td>
-  <td><%= friend.phone %></td>
-  <td><%= friend.phone %></td>
+  <td><%= friend.twitter %></td>
+  <td><%= link_to 'Show', friend %></td>
+  <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
+    <td><%= link_to 'Delete', friend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
   </tr>
   <% end %>
-</tbody>
+ </tbody>
+</table>
 
-<%= link_to "New friend", new_friend_path %>
+<br/>
+
+<%= link_to "New friend", new_friend_path, class:"btn btn-secondary"%>
