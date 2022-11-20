@@ -10,7 +10,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
 
-      <li class="nav-item">
+
+    <% if user_signed_in? %>
+
+     <li class="nav-item">
       <%= link_to 'Friends',
       friends_path,
       class:"nav-link" %>
@@ -20,22 +23,10 @@
       <%= link_to 'Add Friends',
         new_friend_path,
         class:"nav-link" %>
-      </li>
+      </li> 
 
-      <li class="nav-item">
-      <%= link_to 'Sign Up',
-        new_user_registration_path,
-        class:"nav-link" %>
-      </li>
-
-      <li class="nav-item">
-      <%= link_to 'Sign In',
-        new_user_session_path,
-        class:"nav-link" %>
-      </li>
-
-      <li class="nav-item">
-      <%= link_to 'Sign Out',
+      <li class="nav-item btn-secondary">
+      <%= button_to 'Sign Out',
         destroy_user_session_path,
         method: :delete,
         class:"nav-link" %>
@@ -46,6 +37,21 @@
         edit_user_registration_path,
         class:"nav-link" %>
       </li>
+    <% else %>
+
+      <li class="nav-item">
+      <%= link_to 'Sign In',
+        new_user_session_path,
+        class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+      <%= link_to 'Sign Up',
+        new_user_registration_path,
+        class:"nav-link" %>
+      </li>
+
+    <% end %>  
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
